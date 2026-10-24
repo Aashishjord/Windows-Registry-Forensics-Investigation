@@ -33,15 +33,11 @@ This project simulates a phishing-to-persistence attack chain on an isolated Win
 
 ## Ground-Truth Timeline (Attacker Actions)
 
-*(Fill in your actual recorded times here)*
-
 ```
-[TIME] - Invoice_Oct2026.pdf.exe executed from Downloads
-[TIME] - svchost32.exe executed from Temp
-[TIME] - Run key "WindowsUpdateHelper" created
-[TIME] - Payroll_2026.xlsx / Vendor_Bank_Details.docx opened
-[TIME] - VM restarted (to flush ShimCache/AmCache)
-```
+[2026-10-23 07:50:29] - Invoice_Oct2026.pdf.exe executed from Downloads
+[2026-10-23 07:53:58] - svchost32.exe executed from Temp
+[2026-10-23 07:58:14] - Run key "WindowsUpdateHelper" created
+[2026-10-23 08:03:56] - Payroll_2026.xlsx / Vendor_Bank_Details.docx opened
 
 📸 **Screenshot:** `screenshots/01_delivery/zip_in_downloads.png`
 📸 **Screenshot:** `screenshots/02_execution/extracted_renamed_pdf_exe.png`
@@ -69,7 +65,6 @@ All files were integrity-verified with SHA256 hash comparisons between the sourc
 - [AmcacheParser](https://ericzimmerman.github.io/) — Amcache.hve
 - [AppCompatCacheParser](https://ericzimmerman.github.io/) — SYSTEM hive (ShimCache)
 - Arsenal Image Mounter — offline disk mounting
-- Splunk — log correlation (see `/splunk` folder)
 
 ---
 
@@ -211,8 +206,6 @@ See `/splunk/spl_queries.md` for the SPL queries used to attempt correlation of 
 │   └── 05_analysis/
 ├── evidence/
 │   └── parser_output/        (AmCache and ShimCache CSV exports)
-└── splunk/
-    └── spl_queries.md
 ```
 
 ---
