@@ -171,22 +171,6 @@ There is no use of SIEM tools like SPLUNK in this investigation.
 
 ---
 
-## Repository Structure
-
-```
-├── README.md
-├── screenshots/
-│   ├── 01_delivery/
-│   ├── 02_execution/
-│   ├── 03_persistence/
-│   ├── 04_data_access/
-│   └── 05_analysis/
-├── evidence/
-│   └── parser_output/        (AmCache and ShimCache CSV exports)
-```
-
----
-
 ## Author's Note
 
 This project was built and investigated end-to-end in a single day as a self-driven learning exercise, combining registry forensics with SOC-oriented detection and response thinking. Feedback from anyone working in DFIR or SOC roles is welcome.
