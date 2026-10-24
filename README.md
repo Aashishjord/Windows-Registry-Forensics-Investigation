@@ -167,7 +167,7 @@ RecentDocs showed access to two dummy files on the Desktop (`Payroll_2026.xlsx`,
 - SAM and SOFTWARE hives were not analyzed in depth, as the scenario did not involve account creation or OS-level configuration changes.
 - Amcache and ShimCache did not capture the simulated execution events (see Finding #4) — UserAssist served as the primary execution evidence in this investigation.
 - Native Windows auditing (Process Creation, Registry auditing) was not enabled prior to the attack simulation, limiting initial Event Log correlation; this was addressed in a follow-up phase using Sysmon.
-There is no use of SIEM tools like SPLUNK in this investigation.
+- There is no use of SIEM tools like SPLUNK in this investigation.
 
 ---
 
