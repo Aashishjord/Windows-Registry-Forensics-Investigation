@@ -103,17 +103,7 @@ This is a genuine, documented limitation rather than an investigation error:
 RecentDocs showed access to two dummy files on the Desktop (`Payroll_2026.xlsx`, `Vendor_Bank_Details.docx`), representing the kind of sensitive-data access a real attacker might pursue after establishing persistence.
 
 
-## Unified Timeline
 
-| Time | Artifact | Finding |
-|---|---|---|
-| [T0] | UserAssist | `Invoice_Oct2026.pdf.exe` executed from Downloads |
-| [T0+2min] | UserAssist | `svchost32.exe` executed from Temp |
-| [T0+4min] | NTUSER.DAT (Run key) | `WindowsUpdateHelper` persistence created, pointing to Temp |
-| [T0+8min] | RecentDocs | `Payroll_2026.xlsx` and `Vendor_Bank_Details.docx` opened |
-| [T0+10min] | — | VM restarted (ShimCache/AmCache flush attempted — no new entries captured) |
-
-*(Replace bracketed placeholders with your actual recorded timestamps)*
 
 ---
 
@@ -168,9 +158,6 @@ RecentDocs showed access to two dummy files on the Desktop (`Payroll_2026.xlsx`,
 
 ---
 
-## Log-Based Correlation (Splunk)
-
-See `/splunk/spl_queries.md` for the SPL queries used to attempt correlation of registry findings against Windows Event Logs and Sysmon telemetry, including searches for process creation (Event ID 4688) and registry value modification (Event ID 4657 / Sysmon Event ID 13).
 
 ---
 
@@ -180,6 +167,7 @@ See `/splunk/spl_queries.md` for the SPL queries used to attempt correlation of 
 - SAM and SOFTWARE hives were not analyzed in depth, as the scenario did not involve account creation or OS-level configuration changes.
 - Amcache and ShimCache did not capture the simulated execution events (see Finding #4) — UserAssist served as the primary execution evidence in this investigation.
 - Native Windows auditing (Process Creation, Registry auditing) was not enabled prior to the attack simulation, limiting initial Event Log correlation; this was addressed in a follow-up phase using Sysmon.
+There is no use of SIEM tools like SPLUNK in this investigation.
 
 ---
 
