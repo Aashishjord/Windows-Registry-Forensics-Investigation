@@ -39,9 +39,6 @@ This project simulates a phishing-to-persistence attack chain on an isolated Win
 [2026-10-23 07:58:14] - Run key "WindowsUpdateHelper" created
 [2026-10-23 08:03:56] - Payroll_2026.xlsx / Vendor_Bank_Details.docx opened
 
-📸 **Screenshot:** `screenshots/01_delivery/zip_in_downloads.png`
-📸 **Screenshot:** `screenshots/02_execution/extracted_renamed_pdf_exe.png`
-📸 **Screenshot:** `screenshots/02_execution/first_execution_notepad_window.png`
 
 ---
 
@@ -78,14 +75,10 @@ UserAssist (NTUSER.DAT) recorded both GUI-launched executions:
 
 RecentDocs confirmed the ZIP file and extracted executable were accessed via Explorer, consistent with a user opening a downloaded attachment.
 
-📸 **Screenshot:** `screenshots/05_analysis/userassist_entries.png`
-📸 **Screenshot:** `screenshots/05_analysis/recentdocs_entries.png`
-
 ### 2. Masquerading (File Location + Naming)
 
 The payload was copied from Downloads to `%LOCALAPPDATA%\Temp` and renamed to `svchost32.exe` — a name intended to imitate the legitimate Windows process `svchost.exe`, but located in a non-standard, user-writable path. Legitimate `svchost.exe` only runs from `C:\Windows\System32\`, making this location/name mismatch a strong indicator of malicious intent on its own, independent of any hash or signature check.
 
-📸 **Screenshot:** `screenshots/02_execution/svchost32_in_temp.png`
 
 ### 3. Persistence (Run Key)
 
@@ -93,7 +86,6 @@ A Run key named `WindowsUpdateHelper` was created under `HKCU\Software\Microsoft
 
 Notably, the value name (`WindowsUpdateHelper`) is designed to blend in with legitimate Windows Update-related entries — a common social-engineering trick aimed at anyone manually reviewing the Run key.
 
-📸 **Screenshot:** `screenshots/03_persistence/runkey_regedit.png`
 
 ### 4. Amcache and ShimCache Gap — A Key Finding
 
@@ -110,9 +102,6 @@ This is a genuine, documented limitation rather than an investigation error:
 
 RecentDocs showed access to two dummy files on the Desktop (`Payroll_2026.xlsx`, `Vendor_Bank_Details.docx`), representing the kind of sensitive-data access a real attacker might pursue after establishing persistence.
 
-📸 **Screenshot:** `screenshots/04_data_access/dummy_files_desktop.png`
-
----
 
 ## Unified Timeline
 
